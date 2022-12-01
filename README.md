@@ -1,18 +1,18 @@
 # iotPlant
-i2c aktivieren:
-https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
+i2c aktivieren:<br />
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c<br />
 
-Auf Raspi installieren:
+Auf Raspi installieren:<br />
 
-Sensoren:
+Sensoren:<br />
 sudo pip3 install adafruit-circuitpython-bme680<br />
 sudo pip3 install adafruit-circuitpython-si1145<br />
 sudo pip3 install adafruit-circuitpython-seesaw<br />
 
-Paho:
-pip install paho-mqtt
+Paho:<br />
+pip install paho-mqtt<br />
 
-Mosquitto:
-sudo apt install mosquitto
+Mosquitto:<br />
+sudo apt install mosquitto<br />
 
-Script:
+Script:<br />
