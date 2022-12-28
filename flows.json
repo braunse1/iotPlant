@@ -1,0 +1,601 @@
+[
+    {
+        "id": "68094b734a066d9a",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "77b131e2a626f8ed",
+        "type": "mqtt in",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "topic": "si1145/infrared",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6429253cbaf9e6df",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "df28f417ae5f09bd",
+                "d381aa284d90f65c"
+            ]
+        ]
+    },
+    {
+        "id": "6eba2b8659be8077",
+        "type": "mqtt in",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "topic": "seesaw/moisture",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6429253cbaf9e6df",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 660,
+        "y": 340,
+        "wires": [
+            [
+                "2c4ca21b67a8f332",
+                "d06ef5e81995fa5f"
+            ]
+        ]
+    },
+    {
+        "id": "0a579880cb6c5634",
+        "type": "mqtt in",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "topic": "bme680/temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6429253cbaf9e6df",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 670,
+        "y": 440,
+        "wires": [
+            [
+                "1c11fd001c76db15",
+                "76024fc9c23267d9"
+            ]
+        ]
+    },
+    {
+        "id": "df28f417ae5f09bd",
+        "type": "ui_gauge",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Infrarot",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "2500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1120,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "2c4ca21b67a8f332",
+        "type": "ui_gauge",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Feuchtigkeit",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "1015",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1150,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "1c11fd001c76db15",
+        "type": "ui_gauge",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatur",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1130,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "174f658ad8a2c1ae",
+        "type": "debug",
+        "z": "68094b734a066d9a",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "dfd4379b95b35e86",
+        "type": "inject",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 420,
+        "y": 540,
+        "wires": [
+            [
+                "d2d1b8ccb51a950b"
+            ]
+        ]
+    },
+    {
+        "id": "d2d1b8ccb51a950b",
+        "type": "openweathermap",
+        "z": "68094b734a066d9a",
+        "name": "Wetter Winterthur",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Winterthur",
+        "country": "CH",
+        "language": "de",
+        "x": 690,
+        "y": 540,
+        "wires": [
+            [
+                "bd3d88b78636202b",
+                "b0edcb836034517d",
+                "8b363ca777d7c4bb",
+                "174f658ad8a2c1ae"
+            ]
+        ]
+    },
+    {
+        "id": "bd3d88b78636202b",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Detail",
+        "func": "var p;\np=msg.payload;\nmsg.payload=p.detail;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 540,
+        "wires": [
+            [
+                "f0e29d5c1e4af8c2"
+            ]
+        ]
+    },
+    {
+        "id": "b0edcb836034517d",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "TempC",
+        "func": "var p;\np = msg.payload;\nmsg.payload = p.tempc;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b363ca777d7c4bb",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "MaxTempC",
+        "func": "var p;\np = msg.payload;\nmsg.payload = p.temp_maxc;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0e29d5c1e4af8c2",
+        "type": "ui_text",
+        "z": "68094b734a066d9a",
+        "group": "389ddc72569efd64",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Wetter",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1090,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "d381aa284d90f65c",
+        "type": "ui_chart",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "label": "Infrarot Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "2500",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1130,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d06ef5e81995fa5f",
+        "type": "ui_chart",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Feuchtigkeit Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1015",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1170,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "76024fc9c23267d9",
+        "type": "ui_chart",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatur Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1170,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3821bfe7f6c8e3ca",
+        "type": "inject",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 550,
+        "y": 880,
+        "wires": [
+            [
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "41641acaa4af434e",
+        "type": "rpi-gpio out",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "pin": "18",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 1100,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "7d9493cdec7ccebe",
+        "type": "inject",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 550,
+        "y": 940,
+        "wires": [
+            [
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "795c329b4c53c219",
+        "type": "ui_button",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Pump On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 680,
+        "y": 800,
+        "wires": [
+            [
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "e3078460d9085166",
+        "type": "ui_button",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "389ddc72569efd64",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Pump off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 700,
+        "y": 1000,
+        "wires": [
+            [
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "6429253cbaf9e6df",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "389ddc72569efd64",
+        "type": "ui_group",
+        "name": "Standard",
+        "tab": "7b62e02842b323b9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7b62e02842b323b9",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
