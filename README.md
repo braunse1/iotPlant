@@ -19,3 +19,5 @@ sudo apt install mosquitto<br />
 
 7. Script ausführen:<br />
 python iotPlant.py
+
+8. flows.json in node-red importieren
