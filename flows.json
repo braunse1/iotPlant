@@ -20,12 +20,11 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 660,
-        "y": 240,
+        "x": 120,
+        "y": 1140,
         "wires": [
             [
-                "df28f417ae5f09bd",
-                "d381aa284d90f65c"
+                "eba252a8cf85bce1"
             ]
         ]
     },
@@ -42,12 +41,11 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 660,
-        "y": 340,
+        "x": 360,
+        "y": 520,
         "wires": [
             [
-                "2c4ca21b67a8f332",
-                "d06ef5e81995fa5f"
+                "ad6a266ace80a9dc"
             ]
         ]
     },
@@ -64,12 +62,12 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 670,
-        "y": 440,
+        "x": 130,
+        "y": 1480,
         "wires": [
             [
                 "1c11fd001c76db15",
-                "76024fc9c23267d9"
+                "6be926ddeb04436e"
             ]
         ]
     },
@@ -78,26 +76,26 @@
         "type": "ui_gauge",
         "z": "68094b734a066d9a",
         "name": "",
-        "group": "389ddc72569efd64",
-        "order": 5,
+        "group": "d399345fd8723215",
+        "order": 3,
         "width": 0,
         "height": 0,
         "gtype": "gage",
         "title": "Infrarot",
-        "label": "units",
+        "label": "%",
         "format": "{{value}}",
         "min": 0,
-        "max": "2500",
+        "max": "100",
         "colors": [
-            "#00b500",
+            "#e6e600",
             "#e6e600",
             "#ca3838"
         ],
-        "seg1": "",
-        "seg2": "",
+        "seg1": "60",
+        "seg2": "100",
         "className": "",
-        "x": 1120,
-        "y": 160,
+        "x": 700,
+        "y": 1140,
         "wires": []
     },
     {
@@ -105,26 +103,26 @@
         "type": "ui_gauge",
         "z": "68094b734a066d9a",
         "name": "",
-        "group": "389ddc72569efd64",
+        "group": "f9526b2d26d57f9a",
         "order": 1,
         "width": 0,
         "height": 0,
         "gtype": "gage",
         "title": "Feuchtigkeit",
-        "label": "units",
+        "label": "%",
         "format": "{{value}}",
         "min": 0,
-        "max": "1015",
+        "max": "100",
         "colors": [
+            "#ca3838",
             "#00b500",
-            "#e6e600",
             "#ca3838"
         ],
-        "seg1": "",
-        "seg2": "",
+        "seg1": "50",
+        "seg2": "80",
         "className": "",
-        "x": 1150,
-        "y": 280,
+        "x": 950,
+        "y": 520,
         "wires": []
     },
     {
@@ -132,16 +130,180 @@
         "type": "ui_gauge",
         "z": "68094b734a066d9a",
         "name": "",
-        "group": "389ddc72569efd64",
+        "group": "f45f580fa206dcb6",
         "order": 3,
         "width": 0,
         "height": 0,
         "gtype": "gage",
         "title": "Temperatur",
-        "label": "units",
+        "label": "°C",
         "format": "{{value}}",
         "min": 0,
         "max": "50",
+        "colors": [
+            "#0056b3",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "18",
+        "seg2": "28",
+        "className": "",
+        "x": 610,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "d2d1b8ccb51a950b",
+        "type": "openweathermap",
+        "z": "68094b734a066d9a",
+        "name": "Wetter Winterthur",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Winterthur",
+        "country": "CH",
+        "language": "de",
+        "x": 350,
+        "y": 1340,
+        "wires": [
+            [
+                "42bea2e1f448d0e1"
+            ]
+        ]
+    },
+    {
+        "id": "41641acaa4af434e",
+        "type": "rpi-gpio out",
+        "z": "68094b734a066d9a",
+        "name": "GPIO18",
+        "pin": "18",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "bcm": true,
+        "x": 2060,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "795c329b4c53c219",
+        "type": "ui_button",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "f9526b2d26d57f9a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Giessen",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 960,
+        "y": 660,
+        "wires": [
+            [
+                "41641acaa4af434e",
+                "1bff8621384d4d28"
+            ]
+        ]
+    },
+    {
+        "id": "1bff8621384d4d28",
+        "type": "delay",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1360,
+        "y": 720,
+        "wires": [
+            [
+                "d2ac4df2086ec889"
+            ]
+        ]
+    },
+    {
+        "id": "d2ac4df2086ec889",
+        "type": "change",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1630,
+        "y": 720,
+        "wires": [
+            [
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "660217e9cdd99658",
+        "type": "mqtt in",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "topic": "ultrasonic/distance",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "6429253cbaf9e6df",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 700,
+        "wires": [
+            [
+                "8398c3173b0b5372",
+                "67f3511cebaca972"
+            ]
+        ]
+    },
+    {
+        "id": "58e0463149d2f1d6",
+        "type": "ui_gauge",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "group": "f9526b2d26d57f9a",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "Füllstand",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
         "colors": [
             "#00b500",
             "#e6e600",
@@ -150,25 +312,194 @@
         "seg1": "",
         "seg2": "",
         "className": "",
-        "x": 1130,
-        "y": 440,
+        "x": 780,
+        "y": 780,
         "wires": []
     },
     {
-        "id": "174f658ad8a2c1ae",
-        "type": "debug",
+        "id": "8398c3173b0b5372",
+        "type": "function",
         "z": "68094b734a066d9a",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 900,
+        "name": "Zustand Wasser bestimmen",
+        "func": "var dsitance = msg.payload;\nvar levelEmpty = 3.1;\nvar levelFull = 2.2;\nvar levelAct = levelEmpty - dsitance;\n\nmsg.levelPercent = levelAct * 100 / levelFull;\n\n        if (dsitance < 2.4) {\n            msg.payload = false;\n        } else {\n            msg.payload = true;\n        }\n    \n    msg.topic = \"level\"\n\n    return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 700,
+        "wires": [
+            [
+                "379e496533d3b4ba",
+                "2c770e52e65d7966"
+            ]
+        ]
+    },
+    {
+        "id": "7dc71de7f469c665",
+        "type": "trigger",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "op1": "",
+        "op2": "",
+        "op1type": "nul",
+        "op2type": "payl",
+        "duration": "5",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 1360,
+        "y": 600,
+        "wires": [
+            [
+                "44dab4d5ee265566",
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "44dab4d5ee265566",
+        "type": "delay",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "2",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 1600,
         "y": 480,
-        "wires": []
+        "wires": [
+            [
+                "49ab33a1ea0ed81d"
+            ]
+        ]
+    },
+    {
+        "id": "49ab33a1ea0ed81d",
+        "type": "change",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1810,
+        "y": 480,
+        "wires": [
+            [
+                "41641acaa4af434e"
+            ]
+        ]
+    },
+    {
+        "id": "ad6a266ace80a9dc",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "In Prozent umrechnen",
+        "func": "var measure = msg.payload;\nvar moistureMin = 338;\nvar moistureMax = 1018;\n\nmsg.payload = Math.round(100 / (moistureMax - moistureMin) * (measure - moistureMin))\n\nmsg.topic = \"moisture\"\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 520,
+        "wires": [
+            [
+                "379e496533d3b4ba",
+                "2c4ca21b67a8f332"
+            ]
+        ]
+    },
+    {
+        "id": "379e496533d3b4ba",
+        "type": "join",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 950,
+        "y": 600,
+        "wires": [
+            [
+                "f6b3f779cf9d75c5"
+            ]
+        ]
+    },
+    {
+        "id": "f6b3f779cf9d75c5",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Entscheidung",
+        "func": "var level = msg.payload.level;\nvar moisture = msg.payload.moisture;\nvar toggle = msg.payload.toggle;\n\nvar decision = true;\n\nif (toggle == false) {\n     decision = true;\n} else if ((level==false) && (moisture < 70)) {\n     decision = false;\n     }\nmsg.payload = decision;\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 600,
+        "wires": [
+            [
+                "7dc71de7f469c665"
+            ]
+        ]
+    },
+    {
+        "id": "eba252a8cf85bce1",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "In Prozent umrechnen",
+        "func": "var value = msg.payload\nvar valueMax = 2500;\n\nvar infrared = 100/valueMax*value\n\nif(infrared < 0) {\n    infrared = 0\n} else if(infrared > 100) {\n    infrared = 100\n}\nmsg.payload = infrared\n\nmsg.topic = \"infrared\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1140,
+        "wires": [
+            [
+                "2ce75c4e247f2c58",
+                "df28f417ae5f09bd"
+            ]
+        ]
     },
     {
         "id": "dfd4379b95b35e86",
@@ -184,15 +515,15 @@
                 "vt": "str"
             }
         ],
-        "repeat": "",
+        "repeat": "1",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 420,
-        "y": 540,
+        "x": 130,
+        "y": 1340,
         "wires": [
             [
                 "d2d1b8ccb51a950b"
@@ -200,357 +531,473 @@
         ]
     },
     {
-        "id": "d2d1b8ccb51a950b",
-        "type": "openweathermap",
-        "z": "68094b734a066d9a",
-        "name": "Wetter Winterthur",
-        "wtype": "current",
-        "lon": "",
-        "lat": "",
-        "city": "Winterthur",
-        "country": "CH",
-        "language": "de",
-        "x": 690,
-        "y": 540,
-        "wires": [
-            [
-                "bd3d88b78636202b",
-                "b0edcb836034517d",
-                "8b363ca777d7c4bb",
-                "174f658ad8a2c1ae"
-            ]
-        ]
-    },
-    {
-        "id": "bd3d88b78636202b",
-        "type": "function",
-        "z": "68094b734a066d9a",
-        "name": "Detail",
-        "func": "var p;\np=msg.payload;\nmsg.payload=p.detail;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 540,
-        "wires": [
-            [
-                "f0e29d5c1e4af8c2"
-            ]
-        ]
-    },
-    {
-        "id": "b0edcb836034517d",
-        "type": "function",
-        "z": "68094b734a066d9a",
-        "name": "TempC",
-        "func": "var p;\np = msg.payload;\nmsg.payload = p.tempc;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 920,
-        "y": 640,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "8b363ca777d7c4bb",
-        "type": "function",
-        "z": "68094b734a066d9a",
-        "name": "MaxTempC",
-        "func": "var p;\np = msg.payload;\nmsg.payload = p.temp_maxc;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 910,
-        "y": 760,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f0e29d5c1e4af8c2",
-        "type": "ui_text",
-        "z": "68094b734a066d9a",
-        "group": "389ddc72569efd64",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Wetter",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1090,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "d381aa284d90f65c",
-        "type": "ui_chart",
+        "id": "4a66517dc7ecfffe",
+        "type": "ui_switch",
         "z": "68094b734a066d9a",
         "name": "",
-        "group": "389ddc72569efd64",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "label": "Infrarot Chart",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "2500",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1130,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "d06ef5e81995fa5f",
-        "type": "ui_chart",
-        "z": "68094b734a066d9a",
-        "name": "",
-        "group": "389ddc72569efd64",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "label": "Feuchtigkeit Chart",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "1015",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1170,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "76024fc9c23267d9",
-        "type": "ui_chart",
-        "z": "68094b734a066d9a",
-        "name": "",
-        "group": "389ddc72569efd64",
-        "order": 4,
-        "width": 0,
-        "height": 0,
-        "label": "Temperatur Chart",
-        "chartType": "line",
-        "legend": "false",
-        "xformat": "HH:mm:ss",
-        "interpolate": "linear",
-        "nodata": "",
-        "dot": false,
-        "ymin": "0",
-        "ymax": "50",
-        "removeOlder": 1,
-        "removeOlderPoints": "",
-        "removeOlderUnit": "3600",
-        "cutout": 0,
-        "useOneColor": false,
-        "useUTC": false,
-        "colors": [
-            "#1f77b4",
-            "#aec7e8",
-            "#ff7f0e",
-            "#2ca02c",
-            "#98df8a",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "outputs": 1,
-        "useDifferentColor": false,
-        "className": "",
-        "x": 1170,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "3821bfe7f6c8e3ca",
-        "type": "inject",
-        "z": "68094b734a066d9a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "x": 550,
-        "y": 880,
-        "wires": [
-            [
-                "41641acaa4af434e"
-            ]
-        ]
-    },
-    {
-        "id": "41641acaa4af434e",
-        "type": "rpi-gpio out",
-        "z": "68094b734a066d9a",
-        "name": "",
-        "pin": "18",
-        "set": "",
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "bcm": true,
-        "x": 1100,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "7d9493cdec7ccebe",
-        "type": "inject",
-        "z": "68094b734a066d9a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 550,
-        "y": 940,
-        "wires": [
-            [
-                "41641acaa4af434e"
-            ]
-        ]
-    },
-    {
-        "id": "795c329b4c53c219",
-        "type": "ui_button",
-        "z": "68094b734a066d9a",
-        "name": "",
-        "group": "389ddc72569efd64",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Pump On",
+        "label": "Auto Bewässerung",
         "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "topic": "topic",
+        "group": "389ddc72569efd64",
+        "order": 34,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "toggle",
         "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 370,
+        "y": 600,
+        "wires": [
+            [
+                "074a4963c9ad0c2c"
+            ]
+        ]
+    },
+    {
+        "id": "19abf50227912b50",
+        "type": "inject",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 600,
+        "wires": [
+            [
+                "4a66517dc7ecfffe"
+            ]
+        ]
+    },
+    {
+        "id": "074a4963c9ad0c2c",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Topic vergeben",
+        "func": "msg.topic = \"toggle\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 680,
+        "y": 600,
+        "wires": [
+            [
+                "379e496533d3b4ba"
+            ]
+        ]
+    },
+    {
+        "id": "82be66628e0ccc48",
+        "type": "node-red-contrib-whatsapp-cmb-send-message",
+        "z": "68094b734a066d9a",
+        "name": "Sende Levelwarnung",
+        "account": "4dc5d7fc7d9929b2",
+        "text": "Dein Wasserstand ist sehr niedrig. Bitte Wasser nachfüllen",
+        "inputtypemessage": "str",
+        "rejectssl": false,
+        "x": 1500,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4ee125070441718e",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "function 7",
+        "func": "msg.topic = \"toggle\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 740,
+        "y": 900,
+        "wires": [
+            [
+                "2c770e52e65d7966"
+            ]
+        ]
+    },
+    {
+        "id": "d250fe2665fbd823",
+        "type": "inject",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 350,
+        "y": 900,
+        "wires": [
+            [
+                "eae35728cd40e86e"
+            ]
+        ]
+    },
+    {
+        "id": "2c770e52e65d7966",
+        "type": "join",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "2",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 990,
         "y": 800,
         "wires": [
             [
-                "41641acaa4af434e"
+                "fae534bbdf8b57dd"
             ]
         ]
     },
     {
-        "id": "e3078460d9085166",
-        "type": "ui_button",
+        "id": "fae534bbdf8b57dd",
+        "type": "function",
         "z": "68094b734a066d9a",
-        "name": "",
-        "group": "389ddc72569efd64",
-        "order": 8,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Pump off",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "true",
-        "payloadType": "bool",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 700,
-        "y": 1000,
+        "name": "Zustandsflag vergeben",
+        "func": "var toggle = msg.payload.toggle\nvar level = msg.payload.level\n\nvar alarm_flag=context.get(\"alarm_flag\");\n\nif(typeof alarm_flag == \"undefined\") \n    alarm_flag = false;\n\nif(toggle && level && !alarm_flag) {\nalarm_flag = true;\nmsg.alarm = 1;\ncontext.set(\"alarm_flag\", alarm_flag);\nmsg.payload = level\n\nreturn msg\n}\n\nif((!toggle|| !level) && alarm_flag) {\n    alarm_flag = false;\n    msg.alarm = 0;\n    context.set(\"alarm_flag\", alarm_flag);\n}\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1220,
+        "y": 800,
         "wires": [
             [
-                "41641acaa4af434e"
+                "82be66628e0ccc48"
             ]
         ]
+    },
+    {
+        "id": "67f3511cebaca972",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "In Prozent umrechnen",
+        "func": "var dsitance = msg.payload;\nvar levelEmpty = 2.5;\nvar levelFull = 2.2;\nvar levelAct = levelEmpty - dsitance;\nvar levelPercent = levelAct * 100 / levelFull;\n\nif (levelPercent > 100) {\n    levelPercent = 100;\n} else if (levelPercent < 0) {\n    levelPercent = 0;\n}\n\nmsg.topic = \"level\";\nmsg.payload = Math.round(levelPercent);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 780,
+        "wires": [
+            [
+                "58e0463149d2f1d6"
+            ]
+        ]
+    },
+    {
+        "id": "eae35728cd40e86e",
+        "type": "ui_switch",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "label": "Füllstandwarnung",
+        "tooltip": "",
+        "group": "389ddc72569efd64",
+        "order": 35,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 570,
+        "y": 900,
+        "wires": [
+            [
+                "4ee125070441718e"
+            ]
+        ]
+    },
+    {
+        "id": "b21a77c0e88ce3a7",
+        "type": "inject",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 1220,
+        "wires": [
+            [
+                "79ae39c6e7bb2a9a"
+            ]
+        ]
+    },
+    {
+        "id": "79ae39c6e7bb2a9a",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Topic vergeben",
+        "func": "msg.topic = \"timeNow\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 1220,
+        "wires": [
+            [
+                "2ce75c4e247f2c58"
+            ]
+        ]
+    },
+    {
+        "id": "2ce75c4e247f2c58",
+        "type": "join",
+        "z": "68094b734a066d9a",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 810,
+        "y": 1240,
+        "wires": [
+            [
+                "c463900ab500f1d0",
+                "5977687f16a0fdd0"
+            ]
+        ]
+    },
+    {
+        "id": "42bea2e1f448d0e1",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Topic vergeben",
+        "func": "msg.topic = \"weatherData\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1340,
+        "wires": [
+            [
+                "2ce75c4e247f2c58"
+            ]
+        ]
+    },
+    {
+        "id": "c463900ab500f1d0",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Zustandstext vergeben",
+        "func": "var timeNow = msg.payload.timeNow;\nvar sunrise = msg.payload.weatherData.sunrise;\nvar sunset = msg.payload.weatherData.sunset;\nvar weather = msg.payload.weatherData.weather;\nvar infrared = msg.payload.infrared;\n\nvar tageszeit;\n\n\nif((timeNow.getDate = sunrise.getDate && timeNow > sunrise) || timeNow < sunset) {\n     tageszeit = \"tag\"\n} else {\n     tageszeit = \"nacht\"\n}\n\nif(tageszeit == \"nacht\") {\n     msg.payload = \"Deine Pflanze schläft\"\n} else if (tageszeit == \"tag\" && weather.toLowerCase().includes(\"sun\") && infrared < 1600) {\n     msg.payload = \"Die Sonne scheint! Stelle deine Pflanze ans Fenster\"\n} else if (tageszeit == \"tag\" && weather.toLowerCase().includes(\"clo\") || weather.toLowerCase().includes(\"rain\")) {\n     msg.payload = \"Es ist bewölkt. Schenke deiner Pflanze doch etwas Liebe\"\n} else {\n     msg.payload = \"Deine Pflaze steht schön in der Sonne\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1020,
+        "y": 1240,
+        "wires": [
+            [
+                "8ef2036e21b00a71"
+            ]
+        ]
+    },
+    {
+        "id": "8ef2036e21b00a71",
+        "type": "ui_text",
+        "z": "68094b734a066d9a",
+        "group": "d399345fd8723215",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Zustand",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1220,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "6be926ddeb04436e",
+        "type": "function",
+        "z": "68094b734a066d9a",
+        "name": "Zustandstext vergeben",
+        "func": "var temp = msg.payload;\n\nif(temp < 18) {\n    msg.payload = \"Brr, ist das kalt. Bitte stelle mich an einen wärmeren Ort\"\n} else if (temp > 28) {\n    msg.payload = \"Phu, ist das heiss. Bitte stelle mich an einen kühleren Ort\"\n} else {\n    msg.payload = \"Die Temperatur gefällt mir gut\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 1480,
+        "wires": [
+            [
+                "e987a53e4eb813e6"
+            ]
+        ]
+    },
+    {
+        "id": "e987a53e4eb813e6",
+        "type": "ui_text",
+        "z": "68094b734a066d9a",
+        "group": "f45f580fa206dcb6",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Zustand",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 820,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "5977687f16a0fdd0",
+        "type": "debug",
+        "z": "68094b734a066d9a",
+        "name": "debug 2",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "cd9432c647afddc5",
+        "type": "ui_spacer",
+        "z": "68094b734a066d9a",
+        "name": "spacer",
+        "group": "f9526b2d26d57f9a",
+        "order": 3,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "82ea42801f51b69f",
+        "type": "ui_spacer",
+        "z": "68094b734a066d9a",
+        "name": "spacer",
+        "group": "f9526b2d26d57f9a",
+        "order": 4,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "a8faed2e49634959",
+        "type": "ui_spacer",
+        "z": "68094b734a066d9a",
+        "name": "spacer",
+        "group": "d399345fd8723215",
+        "order": 2,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0d519752c3242a92",
+        "type": "ui_spacer",
+        "z": "68094b734a066d9a",
+        "name": "spacer",
+        "group": "f45f580fa206dcb6",
+        "order": 2,
+        "width": 1,
+        "height": 1
     },
     {
         "id": "6429253cbaf9e6df",
@@ -580,9 +1027,20 @@
         "sessionExpiry": ""
     },
     {
-        "id": "389ddc72569efd64",
+        "id": "d399345fd8723215",
         "type": "ui_group",
-        "name": "Standard",
+        "name": "Sonne",
+        "tab": "7b62e02842b323b9",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f9526b2d26d57f9a",
+        "type": "ui_group",
+        "name": "Wasser",
         "tab": "7b62e02842b323b9",
         "order": 1,
         "disp": true,
@@ -591,9 +1049,45 @@
         "className": ""
     },
     {
+        "id": "f45f580fa206dcb6",
+        "type": "ui_group",
+        "name": "Temperatur",
+        "tab": "7b62e02842b323b9",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "389ddc72569efd64",
+        "type": "ui_group",
+        "name": "Settings",
+        "tab": "3f823ee65b3c0e7b",
+        "order": 1,
+        "disp": true,
+        "width": "7",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4dc5d7fc7d9929b2",
+        "type": "node-red-contrib-whatsapp-cmb-account",
+        "name": "",
+        "credentials": {}
+    },
+    {
         "id": "7b62e02842b323b9",
         "type": "ui_tab",
-        "name": "Home",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "3f823ee65b3c0e7b",
+        "type": "ui_tab",
+        "name": "Settings",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
