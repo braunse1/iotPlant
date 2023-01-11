@@ -6,8 +6,42 @@ import board
 import adafruit_bme680
 import adafruit_si1145
 import paho.mqtt.client as mqtt
+import RPi.GPIO as GPIO
 
 from adafruit_seesaw.seesaw import Seesaw
+
+# Ultraschallsensor GPIO definition
+GPIO.setmode(GPIO.BCM)
+GPIO_TRIGGER = 23
+GPIO_ECHO = 24
+GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+GPIO.setup(GPIO_ECHO, GPIO.IN)
+
+def entfernung():
+    # Trig High setzen
+    GPIO.output(GPIO_TRIGGER, True)
+ 
+    # Trig Low setzen (nach 0.01ms)
+    time.sleep(0.00001)
+    GPIO.output(GPIO_TRIGGER, False)
+ 
+    startzeit = time.time()
+    endzeit = time.time()
+ 
+    # Start/Stop Zeit ermitteln
+    while GPIO.input(GPIO_ECHO) == 0:
+        startzeit = time.time()
+ 
+    while GPIO.input(GPIO_ECHO) == 1:
+        endzeit = time.time()
+ 
+    # Vergangene Zeit
+    zeitdifferenz = endzeit - startzeit
+	
+    # Schallgeschwindigkeit (34300 cm/s) einbeziehen
+    entfernung = (zeitdifferenz * 34300) / 2
+    return entfernung
+
 
 def on_connect(client, userdata, flags, rc):
     print(f"Connected with result code {rc}")
@@ -33,9 +67,15 @@ temperature_offset = -5
 
 while True:
 
+    distanz = entfernung()-2
+
     touch = ss.moisture_read()
     temp = ss.get_temp()
     vis, ir = si1145.als
+
+    print("\n****Ultraschall****")
+    print ("Distanz = %.1f cm" % distanz)
+    client.publish('ultrasonic/distance',payload=round(distanz,1), qos=0, retain=False)
 
     print("\n****si1145****")
     print("Visible: "+str(vis))
